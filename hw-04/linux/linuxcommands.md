@@ -17,19 +17,18 @@ grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+" nginx_logs_examples.log | sort -r |
 ```sh
 
 #!/bin/bash
-#!/bin/bash
-DIR="/backup/marbellacovino/$(date +"%Y")/$(date +"%m")/$(date +"%d")"
+DIR="backup/marbellacovino/$(date +"%Y")/$(date +"%m")/$(date +"%d")"
 TODAY="$(date +%w)"
+
 if [ -d "$DIR" ]; then
   ### Take action if $DIR exists ###
   echo "Installing config files in ${DIR}..."
 else
   ###  Control will jump here if $DIR does NOT exists ###
-  mkdir -p backup/marbellacovino/$(date +"%Y")/$(date +"%m")/$(date +"%d") && cd $_
+  mkdir -p "$DIR" && cd $_
   cp ~/nginx_requests_total.txt nginx_requests_total_$(date +"%Y%m%d").txt
-  cd ..
-  if [ "$TODAY" -eq 0 ]; then
-    tar -zcvf nginx_logs_$(date +"%Y%m%d").tar.gz $(date +"%d")
+  if [ "$TODAY" -eq 6 ]; then
+    find . -name '*.txt' -mtime -6 | tar -zcvf nginx_logs_$(date +"%Y%m%d").tar.gz -T -
   fi
 fi
 
