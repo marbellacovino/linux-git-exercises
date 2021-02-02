@@ -67,4 +67,3 @@ crontab -e
 59 23 * * * cd ~/Users/marbellacovino | ./script.sh
 
 ```
-CAPTURAA DE PANTALLA ACA!
