@@ -6,9 +6,11 @@
 • Ordenar las IPs (en orden decreciente)
 • Buscar el número total ocurrencias por cada una de las IPs
 
+```sh
+
 grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+" nginx_logs_examples.log | sort -r | uniq -c | awk '{print $2"-> "$1}' > nginx_requests_total.txt
 
-
+```
 
 ## Parte II:
 
@@ -61,3 +63,4 @@ crontab -e
 59 23 * * * cd ~/Users/marbellacovino | ./script.sh
 
 ```
+CAPTURAA DE PANTALLA ACA!
